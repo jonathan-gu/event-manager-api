@@ -6,10 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.jg.eventmanagerapi.DTO.EventDTO;
+import com.jg.eventmanagerapi.Entity.Event;
 import com.jg.eventmanagerapi.Service.EventService;
 
 @RestController
@@ -19,8 +22,14 @@ public class EventController {
 	private EventService eventService;
 	
 	@GetMapping()
-	public ResponseEntity<List<EventDTO>> getEvents () {
-		List<EventDTO> events = eventService.getEvents();
-		return new ResponseEntity<>(events, HttpStatus.OK);
+	public ResponseEntity<List<EventDTO>> getEvents() {
+		List<EventDTO> eventDTOs = eventService.getEvents();
+		return new ResponseEntity<>(eventDTOs, HttpStatus.OK);
+	}
+	
+	@PostMapping()
+	public ResponseEntity<EventDTO> getEvent(@RequestBody Event event) {
+		EventDTO eventDTO = eventService.createEvent(event);
+		return new ResponseEntity<>(eventDTO, HttpStatus.CREATED);
 	}
 }

@@ -7,57 +7,57 @@ import com.jg.eventmanagerapi.Entity.Event;
 public class EventDTO {
 	private Integer id;
 	
-	public Integer getId () {
+	public Integer getId() {
 		return this.id;
 	}
 	
 	private String title;
 	
-	public String getTitle () {
+	public String getTitle() {
 		return this.title;
 	}
 	
-	public void setTitle (String title) {
+	public void setTitle(String title) {
 		this.title = title;
 	}
 	
 	private String description;
 	
-	public String getDescription () {
+	public String getDescription() {
 		return this.description;
 	}
 	
-	public void setDescription (String description) {
+	public void setDescription(String description) {
 		this.description = description;
 	}
 	
 	private LocalDateTime startDateTime;
 	
-	public LocalDateTime getStartDateTime () {
+	public LocalDateTime getStartDateTime() {
 		return this.startDateTime;
 	}
 	
-	public void setStartDateTime (LocalDateTime startDateTime) {
+	public void setStartDateTime(LocalDateTime startDateTime) {
 		this.startDateTime = startDateTime;
 	}
 	
 	private LocalDateTime endDateTime;
 	
-	public LocalDateTime getEndDateTime () {
+	public LocalDateTime getEndDateTime() {
 		return this.endDateTime;
 	}
 	
-	public void setEndDateTime (LocalDateTime endDateTime) {
+	public void setEndDateTime(LocalDateTime endDateTime) {
 		this.endDateTime = endDateTime;
 	}
 	
 	private String location;
 	
-	public String getLocation () {
+	public String getLocation() {
 		return this.location;
 	}
 	
-	public void setLocation (String location) {
+	public void setLocation(String location) {
 		this.location = location;
 	}
 	

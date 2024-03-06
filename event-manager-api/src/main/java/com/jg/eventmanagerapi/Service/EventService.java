@@ -15,9 +15,14 @@ public class EventService {
 	@Autowired
 	private EventRepository eventRepository;
 	
-	public List<EventDTO> getEvents () {
+	public List<EventDTO> getEvents() {
 		List<Event> events = eventRepository.findAll();
 		List<EventDTO> eventDTOs = events.stream().map(EventDTO::new).collect(Collectors.toList());
 		return eventDTOs;
+	}
+	
+	public EventDTO createEvent(Event event) {
+		event = eventRepository.save(event);
+		return new EventDTO(event);
 	}
 }
