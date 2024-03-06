@@ -2,6 +2,7 @@ package com.jg.eventmanagerapi.Entity;
 
 import java.time.LocalDateTime;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -19,6 +20,7 @@ public class Event {
 		return this.id;
 	}
 	
+	@Column(nullable = false)
 	private String title;
 	
 	public String getTitle() {
@@ -29,6 +31,7 @@ public class Event {
 		this.title = title;
 	}
 	
+	@Column(nullable = false)
 	private String description;
 	
 	public String getDescription() {
@@ -39,6 +42,7 @@ public class Event {
 		this.description = description;
 	}
 	
+	@Column(nullable = false)
 	private LocalDateTime startDateTime;
 	
 	public LocalDateTime getStartDateTime() {
@@ -49,6 +53,7 @@ public class Event {
 		this.startDateTime = startDateTime;
 	}
 	
+	@Column(nullable = false)
 	private LocalDateTime endDateTime;
 	
 	public LocalDateTime getEndDateTime() {
@@ -59,6 +64,7 @@ public class Event {
 		this.endDateTime = endDateTime;
 	}
 	
+	@Column(nullable = false)
 	private String location;
 	
 	public String getLocation() {

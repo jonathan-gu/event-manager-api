@@ -25,4 +25,9 @@ public class EventService {
 		event = eventRepository.save(event);
 		return new EventDTO(event);
 	}
+	
+	public EventDTO updateEvent(Event event) {
+		event = eventRepository.save(event);
+		return new EventDTO(event);
+	}
 }
