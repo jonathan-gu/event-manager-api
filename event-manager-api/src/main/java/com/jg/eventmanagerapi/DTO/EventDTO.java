@@ -1,18 +1,10 @@
-package com.jg.eventmanagerapi.Entity;
+package com.jg.eventmanagerapi.DTO;
 
 import java.time.LocalDateTime;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import com.jg.eventmanagerapi.Entity.Event;
 
-@Entity
-@Table(name="event")
-public class Event {
-	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
+public class EventDTO {
 	private Integer id;
 	
 	public Integer getId () {
@@ -69,20 +61,12 @@ public class Event {
 		this.location = location;
 	}
 	
-	public Event(Integer id, String title, String description, LocalDateTime startDateTime, LocalDateTime endDateTime, String location) {
-		this.id = id;
-		this.title = title;
-		this.description = description;
-		this.startDateTime = startDateTime;
-		this.endDateTime = endDateTime;
-		this.location = location; 
-	}
-	
-	public Event(String title, String description, LocalDateTime startDateTime, LocalDateTime endDateTime, String location) {
-		this.title = title;
-		this.description = description;
-		this.startDateTime = startDateTime;
-		this.endDateTime = endDateTime;
-		this.location = location; 
+	public EventDTO (Event event) {
+		this.id = event.getId();
+		this.title = event.getTitle();
+		this.description = event.getDescription();
+		this.startDateTime = event.getStartDateTime();
+		this.endDateTime = event.getEndDateTime();
+		this.location = event.getLocation();
 	}
 }
