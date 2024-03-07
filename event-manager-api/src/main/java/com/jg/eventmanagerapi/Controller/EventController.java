@@ -34,7 +34,7 @@ public class EventController {
 	
 	@PostMapping()
 	public ResponseEntity<EventDTO> getEvent(@Validated @RequestBody Event event) {
-		if (event.getId() != null) {
+		if (event.getId() != null || event.getStartDateTime().isAfter(event.getEndDateTime())) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 		EventDTO eventDTO = eventService.createEvent(event);
@@ -43,7 +43,7 @@ public class EventController {
 	
 	@PutMapping()
 	public ResponseEntity<String> updateEvent(@Validated @RequestBody Event event) {
-		if (event.getId() == null) {
+		if (event.getId() == null || event.getStartDateTime().isAfter(event.getEndDateTime())) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
 		eventService.updateEvent(event);

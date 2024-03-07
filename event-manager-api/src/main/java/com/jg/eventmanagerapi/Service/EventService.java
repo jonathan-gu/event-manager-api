@@ -1,5 +1,6 @@
 package com.jg.eventmanagerapi.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -19,7 +20,7 @@ public class EventService {
 	private EventRepository eventRepository;
 	
 	public List<EventDTO> getEvents() {
-		List<Event> events = eventRepository.findAll();
+		List<Event> events = eventRepository.findByStartDateTimeGreaterThan(LocalDateTime.now());
 		List<EventDTO> eventDTOs = events.stream().map(EventDTO::new).collect(Collectors.toList());
 		return eventDTOs;
 	}
