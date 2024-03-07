@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -41,11 +42,17 @@ public class EventController {
 	}
 	
 	@PutMapping()
-	public ResponseEntity<EventDTO> updateEvent(@Validated @RequestBody Event event) {
+	public ResponseEntity<String> updateEvent(@Validated @RequestBody Event event) {
 		if (event.getId() == null) {
 			throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
 		}
-		EventDTO eventDTO = eventService.updateEvent(event);
-		return new ResponseEntity<>(eventDTO, HttpStatus.OK);			
+		eventService.updateEvent(event);
+		return new ResponseEntity<>("The event has been updated", HttpStatus.OK);			
+	}
+	
+	@DeleteMapping("/{id}")
+	public ResponseEntity<String> deleteEvent(@PathVariable Integer id) {
+		eventService.deleteEvent(id);
+		return new ResponseEntity<>("The event has been deleted", HttpStatus.OK);
 	}
 }
